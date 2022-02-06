@@ -1,1 +1,10 @@
-idex.json.jb
+@cars.map do |car|
+  {
+    id: @car.id,
+    make: @car.make,
+    model: @car.model,
+    submodel: @car.submodel,
+    color: @car.color,
+    year: @car.year
+  }
+end
