@@ -25,12 +25,16 @@ class Api::CarsController < ApplicationController
   end
 
   def update
-    @cars = car.find_by(id:params[:id])
-    @car.make = params[:make] || @car.make
-    @car.model = params[:model] || @car.model
-    @car.submodel = params[:submodel] || @car.submodel
-    @car.color = params[:color] || @car.color
-    @car.year = params[:year] || @car.year
+    @car = Car.find_by(id:params[:id])
+
+    @car.update(
+      make: params[:make] || @car.make,
+      model: params[:model] || @car.model,
+      submodel: params[:submodel] || @car.submodel,
+      color: params[:color] || @car.color,
+      year: params[:year] || @car.year
+      )
+
     @car.save
     render 'show.json.jb'
   end
