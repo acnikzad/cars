@@ -1,9 +1,8 @@
 class Api::CarsController < ApplicationController
 
-
   def index
     @cars = Car.all
-    render "index.json.jb"
+    render 'index.json.jb'
   end
 
   def create
@@ -17,8 +16,9 @@ class Api::CarsController < ApplicationController
   end
 
   def show
-    @cars = Car.find_by(id:params[:id])
-    render "show.json.jb"
+    the_id = params[:id]
+    @car = Car.find_by(id: the_id)
+    render 'show.json.jb'
   end
 
   def update
@@ -29,6 +29,7 @@ class Api::CarsController < ApplicationController
     @car.color = params[:color] || @car.color
     @car.year = params[:year] || @car.year
     @car.save
+    render 'show.json.jb'
   end
 
   def destroy
