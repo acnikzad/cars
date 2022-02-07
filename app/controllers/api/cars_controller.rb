@@ -6,13 +6,16 @@ class Api::CarsController < ApplicationController
   end
 
   def create
-    @cars = Car.new(
+    @car = Car.new(
       make: params[:make],
       model: params[:model],
       submodel: params[:submodel],
       color: params[:color],
       year: params[:year],
       )
+
+    @car.save
+    render 'show.json.jb'
   end
 
   def show
